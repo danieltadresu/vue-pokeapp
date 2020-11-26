@@ -14,6 +14,11 @@ const store = createStore({
         }
       ]
     }
+  },
+  getters: {
+    pokemon(state) {
+      return state.pokemon;
+    }
   }
 })
 
