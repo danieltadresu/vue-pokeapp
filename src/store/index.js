@@ -4,22 +4,21 @@ const store = createStore({
   state() {
     return {
       pokemon: [
-        {
-          'pokemonId': 'p1',
-          'name': 'pokemon1'
-        },
-        {
-          'pokemonId': 'p2',
-          'name': 'pokemon2'
-        }
+
       ]
     }
   },
   getters: {
     pokemon(state) {
+      console.log(state.pokemon)
       return state.pokemon;
     }
-  }
+  },
+  mutations: {
+    setPokemon(state, payload) {
+      state.pokemon = payload;
+    }
+  }    
 })
 
 export default store;

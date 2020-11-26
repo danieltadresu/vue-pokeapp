@@ -1,24 +1,35 @@
 <template>
   <h1>Vue PokeApp</h1>
-  <ul>
-    <li
-      v-for="pokemon in loadPokemon"
-      v-bind:key="pokemon.pokemonId"
-    >
-      {{ pokemon.pokemonId }}
-      {{ pokemon.name }}
-    </li>
-  </ul>
-
-  {{ fetchPokemon }}
+  {{ this.pokemon }}
 </template>
 
 <script>
 export default {
-  computed: {
-    loadPokemon() {
-      return this.$store.getters.pokemon;
+  data() {
+    return {
+      pokemon: []
     }
+  },
+  mounted() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=0&offset=60')
+    .then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      console.log(data.results);
+
+      const results = [];
+      for(const id in data.results) {
+        results.push({
+          id: id,
+          name: data.results[id].name
+        });
+      }
+      this.pokemon = results;
+
+    })
   }
 }
 </script>
