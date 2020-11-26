@@ -1,6 +1,7 @@
 <template>
   <h1>Vue PokeApp</h1>
-  {{ this.pokemon }}
+
+  {{ this.$store.getters.pokemon }}
 </template>
 
 <script>
@@ -11,25 +12,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.dispatch('loadPokemons'));
-    //fetch('https://pokeapi.co/api/v2/pokemon?limit=0&offset=60')
-    //.then((response) => {
-    //  if(response.ok) {
-    //    return response.json();
-    //  }
-    //})
-    //.then((data) => {
-    //  console.log(data.results);
-    //  const results = [];
-    //  for(const id in data.results) {
-    //    results.push({
-    //      id: id,
-    //      name: data.results[id].name,
-    //      url: data.results[id].url
-    //    });
-    //  }
-    //  this.pokemon = results;
-    //})
+    this.$store.dispatch('loadPokemon');
   }
 }
 </script>

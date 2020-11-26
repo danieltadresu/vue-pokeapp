@@ -17,7 +17,7 @@ const store = createStore({
     }
   },
   actions: {
-    loadPokemons() {
+    loadPokemon(context) {
       fetch('https://pokeapi.co/api/v2/pokemon?limit=0&offset=60')
       .then((response) => {
         if(response.ok) {
@@ -25,7 +25,15 @@ const store = createStore({
         }
       })
       .then((data) => {
-        console.log(data.results);
+        const results = [];
+        for(const id in data.results) {
+          results.push({
+            id: id,
+            name: data.results[id].name,
+            url: data.results[id].url
+          });
+        }
+        context.commit('setPokemon', results);
       })
     }
   }
