@@ -12,8 +12,14 @@
       {{pokemon.name}}
       </h1>
       {{pokemon.abilities}}
+      
+
+
+      <img v-bind:src="pokemon.imgUrl" alt="Italian Trulli">
     </li>
   </ul>
+
+
 </template>
 
 <script>
@@ -45,6 +51,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 
 h1 {
   text-align: center;

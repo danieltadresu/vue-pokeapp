@@ -21,11 +21,9 @@ const store = createStore({
     async loadPokemonData(context) {
       // FETCH POKEMON DATA FROM POKE API,
       let response, responseData;
-
       response = await fetch(
         'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
       );
-
       responseData = await response.json();
 
       //if (!response.ok) { ... }
@@ -37,20 +35,26 @@ const store = createStore({
           id: pokemonIndex,
           name: responseData.results[pokemonIndex].name,
           url: responseData.results[pokemonIndex].url,
-          abilities: []
+          abilities: [],
+          imgUrl: null
         }
         pokemonData.push(pokemon);
       }
 
       for(const pokemonIndex in pokemonData) {
         response = await fetch(
-          pokemonData[pokemonIndex].url
+          pokemonData[pokemonIndex].url // https://pokeapi.co/api/v2/pokemon/0/
         );
-
         responseData = await response.json();
-
         pokemonData[pokemonIndex].abilities.push(responseData.abilities);
+        pokemonData[pokemonIndex].imgUrl = responseData.sprites.other.dream_world.front_default
+        //console.log(responseData.sprites.other.dream_world.front_default);
+
+        console.log(pokemonData[pokemonIndex]);
+
+
       }
+
 
 
       context.commit('setPokemon', pokemonData);
