@@ -1,9 +1,11 @@
 <template>
   <li>
-    <h3>{{ pokemonId }}</h3>
-    <p>{{ pokemonName }}</p>
-    <p>{{ pokemonImage }}</p>
-    <p>{{ pokemonAbilities }}</p>
+    <base-card>
+      <h3>{{ pokemonId }}</h3>
+      <p>{{ pokemonName }}</p>
+      <p>{{ pokemonImage }}</p>
+      <p>{{ pokemonAbilities }}</p>
+    </base-card>
   </li>
 </template>
 
