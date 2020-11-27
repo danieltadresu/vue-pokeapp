@@ -18,62 +18,44 @@ const store = createStore({
     }
   },
   actions: {
+    async loadPokemonData(context) {
+      // FETCH POKEMON DATA FROM POKE API,
+      let response, responseData;
 
-    loadPokemonData(context) {
-      const results = [];
-      fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
-      .then((response) => {
-        if(response.ok) {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        for(const id in data.results) {
-          results.push({
-            id: id,
-            name: data.results[id].name,
-            url: data.results[id].url,
-            abilities: []
-          })
-        }
-        context.commit('setPokemon', results);
-      })
-      
-    },
+      response = await fetch(
+        'https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'
+      );
 
-    loadAbilities(state) {
-      //console.log(state.getters.pokemon[0]);
-      //const results = [];
-      for(const pokemonIndex in state.getters.pokemon) {
-        fetch(state.getters.pokemon[pokemonIndex].url)
-        .then((response) => {
-          if(response.ok) {
-            return response.json();
-          }
-        })
-        .then((data) => {
-          state.getters.pokemon[
-            state.getters.pokemon[pokemonIndex].id
-          ].abilities = data.abilities;
-          console.log(state.getters.pokemon[pokemonIndex].id);
-          console.log(data);
-        });
+      responseData = await response.json();
+
+      //if (!response.ok) { ... }
+
+      let pokemonData = []
+
+      for(const pokemonIndex in responseData.results) {
+        const pokemon = {
+          id: pokemonIndex,
+          name: responseData.results[pokemonIndex].name,
+          url: responseData.results[pokemonIndex].url,
+          abilities: []
+        }
+        pokemonData.push(pokemon);
       }
 
+      for(const pokemonIndex in pokemonData) {
+        response = await fetch(
+          pokemonData[pokemonIndex].url
+        );
+
+        responseData = await response.json();
+
+        pokemonData[pokemonIndex].abilities.push(responseData.abilities);
+      }
+
+
+      context.commit('setPokemon', pokemonData);
     }
   }
 })
 
 export default store;
-
-
-//fetch(data.results[id].url)
-//.then((response) => {
-//  if(response.ok) {
-//    return response.json();
-//  }
-//})
-//.then((data) => {
-//  console.log(data.forms);
-//
-//})

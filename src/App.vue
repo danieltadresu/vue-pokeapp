@@ -1,25 +1,38 @@
 <template>
   <h1>Vue PokeApp</h1>
 
-  <button v-on:click="getData" >Click</button>
+  <button v-on:click="showData">
+    Click me!
+  </button>
 
-  {{ this.$store.getters.pokemon }}
+  <ul v-if="isVisible">
+    <li v-for="pokemon in fetchPokemon" v-bind:key="pokemon.id">
+      <h1>
+      {{pokemon.id}}
+      {{pokemon.name}}
+      </h1>
+      {{pokemon.abilities}}
+    </li>
+  </ul>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      pokemon: []
+      isVisible: false
     }
   },
-  mounted() {
-    this.$store.dispatch('loadPokemonData');
+  computed: {
+    fetchPokemon() {
+      return this.$store.getters.pokemon;
+    }
   },
   methods: {
-   getData() {
-    this.$store.dispatch('loadAbilities');
-   }
+    showData() {
+      this.$store.dispatch('loadPokemonData');
+      this.isVisible = !this.isVisible;
+    }
   }
 }
 </script>
