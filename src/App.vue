@@ -1,6 +1,8 @@
 <template>
   <h1>Vue PokeApp</h1>
 
+  <button v-on:click="getData" >Click</button>
+
   {{ this.$store.getters.pokemon }}
 </template>
 
@@ -12,7 +14,12 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('loadPokemon');
+    this.$store.dispatch('loadPokemonData');
+  },
+  methods: {
+   getData() {
+    this.$store.dispatch('loadAbilities');
+   }
   }
 }
 </script>
