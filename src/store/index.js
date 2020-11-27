@@ -30,6 +30,7 @@ const store = createStore({
 
       let pokemonData = []
 
+
       for(const pokemonIndex in responseData.results) {
         const pokemon = {
           id: pokemonIndex,
@@ -46,17 +47,18 @@ const store = createStore({
           pokemonData[pokemonIndex].url // https://pokeapi.co/api/v2/pokemon/0/
         );
         responseData = await response.json();
-        pokemonData[pokemonIndex].abilities.push(responseData.abilities);
-        pokemonData[pokemonIndex].imgUrl = responseData.sprites.other.dream_world.front_default
+
+        pokemonData[pokemonIndex].imgUrl = responseData.sprites.other.dream_world.front_default;
         //console.log(responseData.sprites.other.dream_world.front_default);
 
-        console.log(pokemonData[pokemonIndex]);
-
+        for(const abilityIndex in responseData.abilities) {
+          //console.log(responseData.abilities[abilityIndex].ability.name);
+          pokemonData[pokemonIndex].abilities.push(
+            responseData.abilities[abilityIndex].ability.name
+          )
+        }
 
       }
-
-
-
       context.commit('setPokemon', pokemonData);
     }
   }

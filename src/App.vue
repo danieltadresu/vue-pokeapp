@@ -11,11 +11,10 @@
       {{pokemon.id}}
       {{pokemon.name}}
       </h1>
-      {{pokemon.abilities}}
-      
-
-
       <img v-bind:src="pokemon.imgUrl" alt="Italian Trulli">
+
+
+      {{pokemon.abilities}}
     </li>
   </ul>
 
