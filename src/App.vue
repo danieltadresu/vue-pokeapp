@@ -1,28 +1,32 @@
 <template>
-  <h1>Vue PokeApp</h1>
 
-  <button v-on:click="showData">
-    Click me!
-  </button>
+  <the-header></the-header>
+
+  <button v-on:click="showData">Click me!</button>
 
   <ul v-if="isVisible">
-    <li v-for="pokemon in fetchPokemon" v-bind:key="pokemon.id">
-      <h1>
-      {{pokemon.id}}
-      {{pokemon.name}}
-      </h1>
-      <img v-bind:src="pokemon.imgUrl" alt="Italian Trulli">
 
+    <pokemon-item
+      v-for="pokemon in fetchPokemon"
+      v-bind:key="pokemon.id"
+      v-bind:pokemon-id="pokemon.id"
+      v-bind:pokemon-name="pokemon.name"
+      v-bind:pokemon-image="pokemon.imgUrl"
+      v-bind:pokemon-abilities="pokemon.abilities">
+    </pokemon-item>
 
-      {{pokemon.abilities}}
-    </li>
   </ul>
-
 
 </template>
 
 <script>
+import TheHeader from './components/layout/TheHeader.vue';
+import PokemonItem from './components/pokemon/PokemonItem.vue';
 export default {
+  components: {
+    TheHeader,
+    PokemonItem
+  },
   data() {
     return {
       isVisible: false
@@ -58,6 +62,9 @@ h1 {
 
 ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
+li { }
 </style>
