@@ -7,11 +7,6 @@
           POKEMON LIST
         </router-link>
       </li>
-      <li>
-        <router-link to="/">
-          DETAILS
-        </router-link>
-      </li>
     </ul>
   </header>
 </template>
