@@ -1,6 +1,6 @@
 <template>
   <li>
-    <base-card>
+    <base-card mode="card-list">
       <header>
         <h3>{{ pokemonTitle }}</h3>
       </header>
