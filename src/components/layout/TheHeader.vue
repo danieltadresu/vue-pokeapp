@@ -3,10 +3,12 @@
     <h1>{{headerTitle}}</h1>
     <ul>
       <li>
-        POKEMON LIST
+        <router-link to="/pokemon">
+          POKEMON LIST
+        </router-link>
       </li>
       <li>
-        POKEMON DETAILS
+        POKEMON DETAIL
       </li>
     </ul>
   </header>
@@ -37,6 +39,17 @@ ul, li {
   list-style-type: none;
   margin: 0 .5rem;
   padding: 0;
+}
+
+
+a:active,
+a:hover,
+a.router-link-active {
+  color: white;
+  font-weight:bold;
+  background-color: #10B981;
+  border-radius: 12px;
+  padding: .5rem 1rem;
 }
 
 @media screen and (max-width: 768px) {
