@@ -8,9 +8,10 @@
         <img v-bind:src="pokemonImage">
       </main>
       <footer>
-        <a>
+        <router-link v-bind:to="pokemonDetailLink">
           SEE DETAILS <i class="fas fa-search"></i>
-        </a>
+        </router-link>
+
       </footer>
     </base-card>
   </li>
@@ -22,6 +23,9 @@
     computed: {
       pokemonTitle() {
         return this.pokemonName.toUpperCase();
+      },
+      pokemonDetailLink() {
+        return this.$route.path + '/' + this.pokemonId;
       }
     }
   }

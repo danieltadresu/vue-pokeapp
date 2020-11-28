@@ -3,6 +3,7 @@
     <pokemon-item
       v-for="pokemon in fetchPokemon"
       v-bind:key="pokemon.id"
+      v-bind:pokemon-id="pokemon.id"
       v-bind:pokemon-name="pokemon.name"
       v-bind:pokemon-image="pokemon.imgUrl">
     </pokemon-item>
