@@ -1,6 +1,5 @@
 <template>
-  <h1>PokemonDetail</h1>
-  <p> {{ fetchPokemon }} </p>
+  {{ selectedPokemon }}
 </template>
 
 <script>
@@ -19,11 +18,6 @@
         pokemon => pokemon.id = pokemonId
       );
       console.log(this.selectedPokemon)
-    },
-    computed: {
-      fetchPokemon() {
-        return this.$store.getters.pokemon;
-      }
     }
   }
 </script>
