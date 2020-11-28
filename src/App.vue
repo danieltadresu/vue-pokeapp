@@ -1,6 +1,6 @@
 <template>
 
-  <the-header></the-header>
+  <the-header header-title="Vue PokeApp"></the-header>
   <router-view></router-view>
 </template>
 

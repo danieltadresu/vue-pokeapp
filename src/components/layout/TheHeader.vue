@@ -1,5 +1,17 @@
 <template>
   <header>
-    <h1>Vue PokeApp</h1>
+    <h1>{{headerTitle}}</h1>
   </header>
 </template>
+
+<script>
+export default {
+  props: ['headerTitle']
+}
+</script>
+
+<style scoped>
+ h1 {
+  text-align: center;
+ }
+</style>
