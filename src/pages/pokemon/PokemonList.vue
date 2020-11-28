@@ -1,8 +1,5 @@
 <template>
-  <button v-on:click="showData">Click me!</button>
-
-  <ul v-if="isVisible">
-
+  <ul >
     <pokemon-item
       v-for="pokemon in fetchPokemon"
       v-bind:key="pokemon.id"
@@ -11,7 +8,6 @@
       v-bind:pokemon-image="pokemon.imgUrl"
       v-bind:pokemon-abilities="pokemon.abilities">
     </pokemon-item>
-
   </ul>
 </template>
 
@@ -21,10 +17,8 @@ export default {
   components: {
     PokemonItem
   },
-  data() {
-    return {
-      isVisible: false
-    }
+  mounted() {
+    this.$store.dispatch('loadPokemonData');
   },
   computed: {
     fetchPokemon() {
@@ -34,7 +28,7 @@ export default {
   methods: {
     showData() {
       this.$store.dispatch('loadPokemonData');
-      this.isVisible = !this.isVisible;
+
     }
   }
 }
@@ -52,4 +46,8 @@ ul {
 }
 
 li { }
+
+div {
+  text-align: center;
+}
 </style>
