@@ -1,26 +1,17 @@
 <template>
   <li>
     <base-card>
-
       <header>
-        <h2>{{ pokemonTitle }}</h2>
+        <h3>{{ pokemonTitle }}</h3>
       </header>
-
-      <section>
+      <main>
         <img v-bind:src="pokemonImage">
-      </section>
-
+      </main>
       <footer>
-        <h3>Abilities</h3>
-        <nav>
-          <ul>
-            <li v-for="(ability, index) in pokemonAbilities" v-bind:key="index">
-              <h3>{{ ability.toUpperCase() }}</h3>
-            </li>
-          </ul>
-        </nav>
+        <a>
+          SEE DETAILS <i class="fas fa-search"></i>
+        </a>
       </footer>
-
     </base-card>
   </li>
 </template>
@@ -30,32 +21,26 @@
     props: ['pokemonId', 'pokemonName', 'pokemonImage', 'pokemonAbilities'],
     computed: {
       pokemonTitle() {
-        return this.pokemonId + ' ' + this.pokemonName.toUpperCase();
+        return this.pokemonName.toUpperCase();
       }
     }
   }
 </script>
 
 <style scoped>
-  p, h1 {
-    margin: 0;
-    padding: 0;
+
+  h3 {
+    letter-spacing: -1px;
   }
 
-  header, section, footer {
-    margin: 2rem 0;
+  main, header, footer {
+    margin: 1rem 0;
     text-align: center;
   }
 
-  nav {
-    border: 1px solid black;
-    display: inline-block;
-    padding: 0 4rem;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  img {
+    max-width: 100px;
   }
-
 
 
 </style>
