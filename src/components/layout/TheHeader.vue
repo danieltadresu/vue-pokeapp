@@ -4,7 +4,12 @@
     <ul>
       <li>
         <router-link to="/pokemon">
-          FETCH POKEMONS
+          POKEMON LIST
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/">
+          DETAILS
         </router-link>
       </li>
     </ul>
@@ -38,7 +43,6 @@ ul, li {
   padding: 0;
 }
 
-
 a.router-link-active {
 padding: .8rem 2rem;
 margin: 1rem auto;
@@ -50,8 +54,6 @@ font-weight: bold;
 display: inline-block;
 font-size: .8rem;
 }
-
-
 
 @media screen and (max-width: 768px) {
   header {
