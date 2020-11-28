@@ -24,12 +24,6 @@ export default {
     fetchPokemon() {
       return this.$store.getters.pokemon;
     }
-  },
-  methods: {
-    showData() {
-      this.$store.dispatch('loadPokemonData');
-
-    }
   }
 }
 </script>
