@@ -4,11 +4,8 @@
     <ul>
       <li>
         <router-link to="/pokemon">
-          POKEMON LIST
+          FETCH POKEMONS
         </router-link>
-      </li>
-      <li>
-        POKEMON DETAIL
       </li>
     </ul>
   </header>
@@ -42,22 +39,24 @@ ul, li {
 }
 
 
-a:active,
-a:hover,
 a.router-link-active {
-  color: white;
-  font-weight:bold;
-  background-color: #10B981;
-  border-radius: 12px;
-  padding: .5rem 1rem;
+padding: .8rem 2rem;
+margin: 1rem auto;
+background-color: #2563EB;
+color: white;
+border-radius: 50px;
+border: none;
+font-weight: bold;
+display: inline-block;
+font-size: .8rem;
 }
+
+
 
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
   }
 }
-
-
 
 </style>
