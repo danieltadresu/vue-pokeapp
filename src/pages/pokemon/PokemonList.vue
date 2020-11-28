@@ -1,12 +1,10 @@
 <template>
-  <ul >
+  <ul>
     <pokemon-item
       v-for="pokemon in fetchPokemon"
       v-bind:key="pokemon.id"
-      v-bind:pokemon-id="pokemon.id"
       v-bind:pokemon-name="pokemon.name"
-      v-bind:pokemon-image="pokemon.imgUrl"
-      v-bind:pokemon-abilities="pokemon.abilities">
+      v-bind:pokemon-image="pokemon.imgUrl">
     </pokemon-item>
   </ul>
 </template>
