@@ -15,8 +15,7 @@ Clonar repositorio en tu equipo local y ejecutar
 ```
 npm install
 ```
-
-## Para ejecutar, se debe ejecutar el siguiente comando
+Una vez realizado el paso anterior, ejecutar 
 
 ```
 npm run serve
