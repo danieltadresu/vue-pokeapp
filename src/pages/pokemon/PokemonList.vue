@@ -5,7 +5,8 @@
       v-bind:key="pokemon.id"
       v-bind:pokemon-id="pokemon.id"
       v-bind:pokemon-name="pokemon.name"
-      v-bind:pokemon-image="pokemon.imgUrl">
+      v-bind:pokemon-image="pokemon.imgUrl"
+      v-bind:pokemon-abilities="pokemon.abilities">
     </pokemon-item>
   </ul>
 </template>
