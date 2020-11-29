@@ -11,9 +11,15 @@ Una vez instalado, ejecutar el siguiente comando
 npm install -g @vue/cli
 ```
 
-Clonar repositorio en tu equipo local y ejecuta
+Clonar repositorio en tu equipo local y ejecutar
 ```
 npm install
+```
+
+## Compilar
+
+```
+npm run serve
 ```
 
 ### Customize configuration
